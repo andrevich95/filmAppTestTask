@@ -1,0 +1,14 @@
+#help{
+	border: 1px black;
+}
+#help a{
+	text-decoration: none;
+}
+.panel-body .image_film img{
+	width: 20vw;
+	margin: 1vw;
+}
+.info_film{
+	margin-left: 28vw;
+	padding:1vw;
+}

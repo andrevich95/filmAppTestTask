@@ -1,6 +1,8 @@
 <?php
 function __autoload($class){
-	require_once 'app/core/'.strtolower($class).'.php';
+	foreach (array('core','models','controllers') as $value) {
+		if('./app/'.$value.'/'.strtolower($class).'.php') require_once './app/'.$value.'/'.strtolower($class).'.php';
+	}	
 }
 
 class Route
@@ -14,7 +16,7 @@ class Route
 		$routes = explode('/', $_SERVER['REQUEST_URI']);
 
 		/* получаем имена контроллера и действия 
-			у меня url имеет вид localhost/test/контроллер/действие
+			у меня url имеет вид localhost/имя_сайта/контроллер/действие
 			для url вида имя_сайта/контроллер/действие индексация будет на 1 меньше
 		*/
 		if ( !empty($routes[2]) )
