@@ -14,19 +14,19 @@ class Route
 		$action_name = 'index';
 		
 		$routes = explode('/', $_SERVER['REQUEST_URI']);
-
+		$root = array_search('film_app', $routes);
 		/* получаем имена контроллера и действия 
 			у меня url имеет вид localhost/имя_сайта/контроллер/действие
 			для url вида имя_сайта/контроллер/действие индексация будет на 1 меньше
 		*/
-		if ( !empty($routes[2]) )
+		if ( !empty($routes[$root+1]) )
 		{	
-			$controller_name = $routes[2];
+			$controller_name = $routes[$root+1];
 		}
 
-		if ( !empty($routes[3]) )
+		if ( !empty($routes[$root+2]) )
 		{
-			$action_name = $routes[3];
+			$action_name = $routes[$root+2];
 		}
 
 		$model_name = 'Model_'.$controller_name;
